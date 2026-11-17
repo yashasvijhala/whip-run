@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- **Wayland fix**: the overlay now starts Electron in X11 mode from launch. Before, it switched too late on Wayland desktops, the drawing crashed, and the cowboy never appeared
+
 ## 0.2.1
 
 - **No surprise visits**: live reactions while Claude Code works are now opt-in through `whipRun.reactToClaude`

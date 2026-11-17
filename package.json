@@ -2,7 +2,7 @@
   "name": "whip-run",
   "displayName": "Whip Run: Whip Claude Into Shape",
   "description": "An endless-runner game across the bottom of your real screen while Claude Code works. Jump bugs, smash 500 errors, and whip Claude when he slacks off.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "yashasvijhala",
   "author": "Yashasvi Jhala",
   "license": "MIT",

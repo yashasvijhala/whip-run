@@ -134,6 +134,13 @@ async function launchOverlay(context, auto) {
   const electron = await findElectron(context, !auto)
   if (!electron || overlay) return
   const args = [path.join(context.extensionPath, 'overlay', 'main.js')]
+  if (process.platform === 'linux') {
+    // Wayland won't let an app keep a window on top or move focus, so the overlay runs on
+    // XWayland. This must be a launch flag: Electron picks its display backend before any
+    // app code runs, and switching later leaves the drawing processes hunting for a window
+    // that doesn't exist.
+    args.unshift('--ozone-platform=x11')
+  }
   if (electron.downloaded && process.platform === 'linux') {
     // Release builds need a root-owned sandbox helper that a per-user download can't have.
     // The overlay only loads its own local files, so running without the sandbox is safe.
@@ -146,7 +153,7 @@ async function launchOverlay(context, auto) {
   if (!cfg().get('sound')) args.push('--mute')
 
   // The extension host sets ELECTRON_RUN_AS_NODE, which would turn Electron into plain Node.
-  const env = { ...process.env }
+  const env = { ...process.env, ELECTRON_OZONE_PLATFORM_HINT: 'x11' }
   delete env.ELECTRON_RUN_AS_NODE
   const child = spawn(electron.bin, args, { env, stdio: ['pipe', 'ignore', 'pipe'] })
   overlay = child

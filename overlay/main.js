@@ -25,8 +25,8 @@ const argNum = (name, fallback) => {
 // Chromium needs these for a see-through window and for sound without a click first.
 app.commandLine.appendSwitch('enable-transparent-visuals')
 app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
-// Wayland won't let apps keep windows on top or move focus, so run through XWayland instead.
-if (LINUX) app.commandLine.appendSwitch('ozone-platform', 'x11')
+// The extension starts Electron with --ozone-platform=x11 on Linux. Setting it here would be
+// too late: by now Electron has already chosen Wayland, and the window would never draw.
 
 let win
 let display
