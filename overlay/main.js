@@ -159,6 +159,11 @@ ipcMain.on('visible', (_e, on) => {
     win.showInactive()
     win.setAlwaysOnTop(true, 'screen-saver')
   } else if (!on && win.isVisible()) win.hide()
+  // While anything is on screen, Esc sends the whole overlay home. It's only borrowed
+  // while the cowboy is visible, so Esc goes back to your editor the moment he leaves.
+  if (keyWin) return
+  if (on && !globalShortcut.isRegistered('Escape')) globalShortcut.register('Escape', () => app.quit())
+  else if (!on && globalShortcut.isRegistered('Escape')) globalShortcut.unregister('Escape')
 })
 
 // The game reads keys through a 1x1 invisible window, because Linux can't make the big
@@ -197,6 +202,7 @@ ipcMain.on('interactive', (_e, on) => {
       focusKeyWindow()
     })
     keyWin.on('closed', () => (keyWin = null))
+    if (globalShortcut.isRegistered('Escape')) globalShortcut.unregister('Escape')
     globalShortcut.register('Escape', () => send('command', 'stop-play'))
     return
   }

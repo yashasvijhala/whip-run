@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- **No surprise visits**: live reactions while Claude Code works are now opt-in through `whipRun.reactToClaude`
+- **Esc means Esc**: it now dismisses a cameo that's already on screen, not just the game
+
 ## 0.2.0
 
 - **Whip Run**: an endless runner along the bottom edge of your screen, with six levels from Hello World to Infinite Loop

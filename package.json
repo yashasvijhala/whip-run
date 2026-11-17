@@ -2,35 +2,76 @@
   "name": "whip-run",
   "displayName": "Whip Run: Whip Claude Into Shape",
   "description": "An endless-runner game across the bottom of your real screen while Claude Code works. Jump bugs, smash 500 errors, and whip Claude when he slacks off.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "yashasvijhala",
   "author": "Yashasvi Jhala",
   "license": "MIT",
   "icon": "images/icon.png",
-  "galleryBanner": { "color": "#1b1530", "theme": "dark" },
-  "repository": { "type": "git", "url": "https://github.com/yashasvijhala/whip-run" },
-  "bugs": { "url": "https://github.com/yashasvijhala/whip-run/issues" },
+  "galleryBanner": {
+    "color": "#1b1530",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yashasvijhala/whip-run"
+  },
+  "bugs": {
+    "url": "https://github.com/yashasvijhala/whip-run/issues"
+  },
   "homepage": "https://github.com/yashasvijhala/whip-run#readme",
-  "keywords": ["claude", "claude code", "game", "fun", "ai", "agent", "runner", "break"],
-  "engines": { "vscode": "^1.85.0" },
-  "categories": ["Other"],
+  "keywords": [
+    "claude",
+    "claude code",
+    "game",
+    "fun",
+    "ai",
+    "agent",
+    "runner",
+    "break"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
   "main": "./extension.js",
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "commands": [
-      { "command": "whipRun.play", "title": "Whip Run: Play" },
-      { "command": "whipRun.quit", "title": "Whip Run: Close the Overlay" },
-      { "command": "whipRun.connect", "title": "Whip Run: Connect to Claude Code" },
-      { "command": "whipRun.disconnect", "title": "Whip Run: Disconnect from Claude Code" }
+      {
+        "command": "whipRun.play",
+        "title": "Whip Run: Play"
+      },
+      {
+        "command": "whipRun.quit",
+        "title": "Whip Run: Close the Overlay"
+      },
+      {
+        "command": "whipRun.connect",
+        "title": "Whip Run: Connect to Claude Code"
+      },
+      {
+        "command": "whipRun.disconnect",
+        "title": "Whip Run: Disconnect from Claude Code"
+      }
     ],
-    "keybindings": [{ "command": "whipRun.play", "key": "ctrl+alt+j", "mac": "cmd+alt+j" }],
+    "keybindings": [
+      {
+        "command": "whipRun.play",
+        "key": "ctrl+alt+j",
+        "mac": "cmd+alt+j"
+      }
+    ],
     "configuration": {
       "title": "Whip Run",
       "properties": {
         "whipRun.reactToClaude": {
           "type": "boolean",
-          "default": true,
-          "description": "Show live reactions on screen while Claude Code works: paper airplanes for edits, a sign for commands, a magnifying glass for searches. Needs the Claude Code connection."
+          "default": false,
+          "description": "Let the overlay pop up on its own while Claude Code works: paper airplanes for edits, a sign for commands, and cowboy cameos. Off by default. Needs the Claude Code connection. Esc dismisses it."
         },
         "whipRun.cameoAfterSeconds": {
           "type": "number",

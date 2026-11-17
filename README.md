@@ -36,7 +36,7 @@ Claude runs ahead of you with a small energy bar over his head. The energy drain
 
 Run **Whip Run: Connect to Claude Code** from the Command Palette. Whip Run adds 5 small hooks to `~/.claude/settings.json` (after asking, and after saving a backup) so the game knows what Claude Code is doing:
 
-- **While Claude Code works**: your screen reacts to each tool. File edits fly past as paper airplanes, commands pop up on a sign, and searches sweep by under a magnifying glass. After 20 seconds the cowboy starts dropping by on his own
+- **While Claude Code works** (opt-in, turn on `whipRun.reactToClaude`): your screen reacts to each tool. File edits fly past as paper airplanes, commands pop up on a sign, and searches sweep by under a magnifying glass. After 20 seconds the cowboy starts dropping by on his own. `Esc` sends everyone home
 - **While you play**: every file Claude edits sends a fresh bug down your track
 - **When Claude Code finishes**: you get a **DONE ✅** sign and +100 points
 
@@ -56,7 +56,7 @@ Whip Run draws on top of your screen with Electron. On first play it asks to dow
 
 | Setting | Default | Does |
 | --- | --- | --- |
-| `whipRun.reactToClaude` | `true` | Show live reactions while Claude Code works |
+| `whipRun.reactToClaude` | `false` | Let the overlay pop up on its own while Claude Code works |
 | `whipRun.cameoAfterSeconds` | `20` | Seconds of Claude Code work before the cowboy visits on his own |
 | `whipRun.notifyWhenDone` | `true` | Notify you when Claude Code finishes or needs input |
 | `whipRun.sound` | `true` | Whip cracks, yelps and jingles |
